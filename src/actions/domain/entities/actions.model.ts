@@ -1,22 +1,20 @@
 export type CombatActions = {
+	_id: string;
 	name: string;
 	type?: string;
 	img?: string;
-	data?: CombatActionsData;
-	_id: string;
+	description?: string;
+	nbUtilisationsMax?: string;
+	preRequis: PreRequis;
+	test: Test;
 };
 
-export type CombatActionsData = {
-	description: string;
-	actif: boolean;
-	nbUtilisationsMax: string;
-	nbUtilisationsActuel: number;
-	attribut: string;
-	metier: string;
-	preRequis: PreRequis;
+export type Test = {
+	attribut?: string;
+	metier?: string;
 };
 
 export type PreRequis = {
-	metier: string;
-	value: string;
+	metier?: string;
+	value?: string;
 };

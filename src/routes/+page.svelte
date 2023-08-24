@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { CombatActions } from '../actions/models/actions.model';
+	import type { CombatActions } from '../actions/domain/entities/actions.model';
 	import { buildContainer, getContainer } from './context-builder';
 
 	type vm = {
@@ -35,12 +35,12 @@
 			<th>Métier</th>
 		</tr>
 
-		{#each vm?.actions as { name, type, data }}
+		{#each vm?.actions as { name, type, test }}
 			<tr>
 				<td>{name}</td>
 				<td>{type}</td>
-				<td>{data?.attribut}</td>
-				<td>{data?.metier}</td>
+				<td>{test?.attribut}</td>
+				<td>{test?.metier}</td>
 			</tr>
 		{/each}
 	</table>

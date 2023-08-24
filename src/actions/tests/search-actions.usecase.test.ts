@@ -1,9 +1,6 @@
 import { beforeEach, describe, it } from 'vitest';
-import {
-	ActionsBuilder,
-	createSearchActionsFixture,
-	type SearchActionsFixture
-} from './search-actions.fixture';
+import { createSearchActionsFixture, type SearchActionsFixture } from './search-actions.fixture';
+import { StubActionBuilder } from './stub-actions.builder';
 
 describe('Search actions', () => {
 	let fixture: SearchActionsFixture;
@@ -20,8 +17,8 @@ describe('Search actions', () => {
 
 	it('should return a list of many actions', async () => {
 		const data = [
-			new ActionsBuilder().withName('Attaque en force').build(),
-			new ActionsBuilder().withName('Attaque précise').build()
+			new StubActionBuilder().withName('Attaque en force').build(),
+			new StubActionBuilder().withName('Attaque précise').build()
 		];
 
 		fixture.givenActionsDataIs([...data]);
@@ -31,9 +28,9 @@ describe('Search actions', () => {
 
 	describe('when i filter by name', () => {
 		const data = [
-			new ActionsBuilder().withName('Attaque en force').build(),
-			new ActionsBuilder().withName('Attaque précise').build(),
-			new ActionsBuilder().withName('Parade').build()
+			new StubActionBuilder().withName('Attaque en force').build(),
+			new StubActionBuilder().withName('Attaque précise').build(),
+			new StubActionBuilder().withName('Parade').build()
 		];
 		it('should return all elements with name containing the given string', async () => {
 			fixture.givenActionsDataIs([...data]);
