@@ -3,7 +3,6 @@
 	import { getContainer } from '../../../context-builder';
 	import type { CombatActions } from '../../domain/entities/actions.model';
 	
-
 	type vm = {
 		actions: CombatActions[];
 	};
@@ -21,22 +20,27 @@
 	});
 </script>
 
-    <table>
-      <tr>
-        <th>Nom</th>
-        <th>Type</th>
-        <th>Attribut</th>
-        <th>Métier</th>
-      </tr>
-  
-      {#each vm?.actions as { name, type, test }}
+    <table class="min-w-full text-left text-sm font-light">
+      <thead class="border-b font-medium dark:border-neutral-500">
         <tr>
-          <td>{name}</td>
-          <td>{type}</td>
-          <td>{test?.attribut}</td>
-          <td>{test?.metier}</td>
+          <th scope="col" class="px-6 py-4">Nom</th>
+          <th scope="col" class="px-6 py-4">Type</th>
+          <th scope="col" class="px-6 py-4">Attribut</th>
+          <th scope="col" class="px-6 py-4">Métier</th>
         </tr>
-      {/each}
+      </thead>
+      
+  
+      <tbody>
+        {#each vm?.actions as { name, type, test }}
+          <tr class="border-b dark:border-neutral-500">
+            <td class="whitespace-nowrap px-6 py-4 font-medium">{name}</td>
+            <td class="whitespace-nowrap px-6 py-4">{type}</td>
+            <td class="whitespace-nowrap px-6 py-4">{test?.attribut}</td>
+            <td class="whitespace-nowrap px-6 py-4">{test?.metier}</td>
+          </tr>
+        {/each}
+      </tbody>
     </table>
 
 <style>
