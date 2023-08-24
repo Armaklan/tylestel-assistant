@@ -1,5 +1,5 @@
 import { getContext, setContext } from 'svelte';
-import { JsonActionsProvider } from '../actions/adapters/primary/json-actions.provider';
+import { JsonActionsProvider } from '../actions/adapters/secondary/json-actions.provider';
 import { SearchActionsUsecase } from '../actions/models/search-actions.usecase';
 
 export const buildContainer = () => {
