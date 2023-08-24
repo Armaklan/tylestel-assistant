@@ -1,59 +1,50 @@
-<script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import type { CombatActions } from '../actions/models/actions.model';
+	import { buildContainer, getContainer } from './context-builder';
+
+	type vm = {
+		actions: CombatActions[];
+	};
+
+	let vm: vm = {
+		actions: []
+	};
+
+	buildContainer();
+	const { searchActionsUsecase } = getContainer();
+
+	onMount(async () => {
+		vm = await {
+			actions: await searchActionsUsecase.execute({})
+		};
+	});
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Tylestel Assistant</title>
+	<meta name="description" content="Tylestel assistant du MJ" />
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+	<table>
+		<tr>
+			<th>Nom</th>
+			<th>Type</th>
+			<th>Attribut</th>
+			<th>Métier</th>
+		</tr>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+		{#each vm?.actions as { name, type, data }}
+			<tr>
+				<td>{name}</td>
+				<td>{type}</td>
+				<td>{data?.attribut}</td>
+				<td>{data?.metier}</td>
+			</tr>
+		{/each}
+	</table>
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
 </style>
