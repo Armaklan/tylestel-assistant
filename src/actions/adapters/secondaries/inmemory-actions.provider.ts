@@ -1,5 +1,5 @@
-import type { CombatActions } from '../../models/actions.model';
-import type { ActionsProvider } from '../../models/actions.provider';
+import type { ActionsProvider } from '../../domain/actions.provider';
+import type { CombatActions } from '../../domain/entities/actions.model';
 
 export class InMemoryActionsProvider implements ActionsProvider {
 	#data: CombatActions[] = [];

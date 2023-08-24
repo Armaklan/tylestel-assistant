@@ -1,4 +1,5 @@
-import type { ActionsProvider } from '../../models/actions.provider';
+import type { ActionsProvider } from '../../domain/actions.provider';
+import type { CombatActions } from '../../domain/entities/actions.model';
 
 export class JsonActionsProvider implements ActionsProvider {
 	#data: CombatActions[] = [];

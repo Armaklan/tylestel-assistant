@@ -1,5 +1,5 @@
-import type { CombatActions } from './actions.model';
-import type { ActionsProvider } from './actions.provider';
+import type { ActionsProvider } from '../domain/actions.provider';
+import type { CombatActions } from '../domain/entities/actions.model';
 
 export type ActionsFilter = {
 	name?: string;

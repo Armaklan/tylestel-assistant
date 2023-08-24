@@ -1,7 +1,7 @@
 import { expect } from 'vitest';
-import { InMemoryActionsProvider } from '../adapters/secondary/inmemory-actions.provider';
-import type { CombatActions } from '../models/actions.model';
-import { SearchActionsUsecase, type ActionsFilter } from '../models/search-actions.usecase';
+import { InMemoryActionsProvider } from '../adapters/secondaries/inmemory-actions.provider';
+import type { CombatActions } from '../domain/entities/actions.model';
+import { SearchActionsUsecase, type ActionsFilter } from '../usecases/search-actions.usecase';
 
 export const createSearchActionsFixture = () => {
 	const actionsProvider = new InMemoryActionsProvider();

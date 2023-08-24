@@ -1,4 +1,4 @@
-import type { CombatActions } from './actions.model';
+import type { CombatActions } from './entities/actions.model';
 
 export interface ActionsProvider {
 	all(): Promise<CombatActions[]>;
