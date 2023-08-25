@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getContainer } from '../../../context-builder';
-	import type { CombatActions } from '../../domain/entities/actions.model';
+	import { getContainer } from '../../../../context-builder';
+	import type { CombatActions } from '../../../domain/entities/actions.model';
+	import ActionsFilter from '../components/ActionsFilter.svelte';
 	
 	type vm = {
 		actions: CombatActions[];
@@ -20,6 +21,8 @@
 	});
 </script>
 
+    <ActionsFilter />
+
     <table class="min-w-full text-left text-sm font-light">
       <thead class="border-b font-medium dark:border-neutral-500">
         <tr>
@@ -35,9 +38,9 @@
         {#each vm?.actions as { name, type, test }}
           <tr class="border-b dark:border-neutral-500">
             <td class="whitespace-nowrap px-6 py-4 font-medium">{name}</td>
-            <td class="whitespace-nowrap px-6 py-4">{type}</td>
-            <td class="whitespace-nowrap px-6 py-4">{test?.attribut}</td>
-            <td class="whitespace-nowrap px-6 py-4">{test?.metier}</td>
+            <td class="whitespace-nowrap px-6 py-4 capitalize">{type}</td>
+            <td class="whitespace-nowrap px-6 py-4 capitalize">{test?.attribut}</td>
+            <td class="whitespace-nowrap px-6 py-4 capitalize">{test?.metier}</td>
           </tr>
         {/each}
       </tbody>

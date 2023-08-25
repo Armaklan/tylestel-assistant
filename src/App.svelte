@@ -1,5 +1,5 @@
 <script lang="ts">		
-	import ActionsList from './actions/adapters/primaries/ActionsList.svelte';
+	import ActionsList from './actions/adapters/primaries/page/ActionsList.svelte';
 	import { buildContainer } from './context-builder';
 
 	buildContainer();
